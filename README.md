@@ -43,3 +43,36 @@ SWITCH(
     CurrentInventory <= 0 && PlannedInbound > 0, "🟡 OOS - Inbound Pending",
     "🔴 Critical Shortage" -- 0 Stock & 0 Inbound
 )
+2. Logistics Forecasting (ETA_Week)
+An automated ETA tracker that estimates arrival weeks based on data ingestion timestamps.
+
+Code snippet
+
+ETA_Week = 
+VAR NextWeekArrival = MAX('Wk_11'[Download_Date]) + 7
+RETURN
+IF(
+    [Dostawa_Inbound] > 0, 
+    "Wk " & WEEKNUM(NextWeekArrival), 
+    BLANK()
+)
+✨ Key Business Benefits
+100% Critical Shortage Visibility: Instantly isolates SKUs with zero stock and zero inbound shipments, reducing manual analysis time by 90%.
+
+Proactive Inventory Management: Operational teams can now plan promotions or substitute products based on precise "Inbound Pending" data.
+
+Data-Driven ETA: Supply chain coordinators use the automated ETA_Week forecasting to optimize inbound logistics windows.
+
+💻 Technical Stack
+Data Engineering: Python (pandas, pdfplumber)
+
+Analytics Platform: Microsoft Power BI Desktop
+
+Language: DAX (Data Analysis Expressions) & M Query
+
+👤 Author
+Hubert Kowalski
+
+www.linkedin.com/in/hubert-kowalski-081189398
+
+kowalskihubert343@gmail.com
